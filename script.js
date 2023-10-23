@@ -51,7 +51,7 @@ function addObjectArray(json, categoryName, nameKey) {
   hangmanData.categories[categoryName] = [];
 
   for (i in json) {
-    hangmanData.categories.countries.push(json[i][nameKey]);
+    hangmanData.categories[categoryName].push(json[i][nameKey]);
   }
 }
 
