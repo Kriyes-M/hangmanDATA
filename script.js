@@ -1,5 +1,6 @@
 const hangmanData = {
-  categories: {}
+  categories: {},
+  hardcoreCategories: {}
 };
 
 fetch('./color-names.json')
@@ -18,6 +19,9 @@ fetch('./fruits.json')
   .then((response) => response.json())
   .then((json) => processJson(json, 'fruits'));
 
+fetch('./english10k.txt')
+  .then((response) => response.text())
+  .then((text) => processText(text, 'tenThousand'));
 
 function processJson(json, categoryName) {
 
@@ -37,6 +41,12 @@ function processJson(json, categoryName) {
   }
 
   console.log(hangmanData);
+}
+
+function processText(text, hardcoreCategory) {
+  hangmanData.hardcoreCategories[hardcoreCategory] = [];
+
+  hangmanData.hardcoreCategories[hardcoreCategory] = text.split('\n');
 }
 
 function addArray(json, categoryName) {
